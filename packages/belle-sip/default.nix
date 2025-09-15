@@ -1,8 +1,6 @@
 {
   bctoolbox,
   belr,
-  cmake,
-  fetchFromGitLab,
   lib,
   libantlr3c,
   stdenv,
