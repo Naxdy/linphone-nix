@@ -43,6 +43,7 @@
             msopenh264
             belle-sip
             lime
+            bc-soci
             ;
         }
       );
