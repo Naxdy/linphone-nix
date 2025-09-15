@@ -1,19 +1,21 @@
 {
   makeScopeWithSplicing',
   generateSplicesForMkScope,
+  libsForQt5,
   lib,
 }:
-makeScopeWithSplicing' {
-  otherSplices = generateSplicesForMkScope "linphone";
-  f =
+let
+  scope =
     self:
     let
-      inherit (self) callPackage;
-
       packages = lib.filterAttrs (name: value: value == "directory") (builtins.readDir ./.);
     in
     {
-      mkLinphonePackage = callPackage ./mk-linphone-package { };
+
+      mkLinphonePackage = self.callPackage ./mk-linphone-package { };
+
+      linphoneVersion = "5.4.43";
     }
-    // (lib.mapAttrs (name: value: callPackage ./${name} { }) packages);
-}
+    // (lib.mapAttrs (name: value: self.callPackage ./${name} { }) packages);
+in
+lib.makeScope libsForQt5.newScope scope

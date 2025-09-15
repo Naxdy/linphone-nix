@@ -39,6 +39,7 @@
             belcard
             bzrtp
             ortp
+            mediastreamer2
             ;
         }
       );

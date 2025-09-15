@@ -3,6 +3,7 @@
   fetchFromGitLab,
   lib,
   cmake,
+  linphoneVersion,
 }:
 {
   pname,
@@ -16,14 +17,14 @@ stdenv.mkDerivation (
   (lib.recursiveUpdate
     {
       inherit pname;
-      version = "5.4.43";
+      version = linphoneVersion;
 
       src = fetchFromGitLab {
         domain = "gitlab.linphone.org";
         owner = "public";
         group = "BC";
         repo = "linphone-sdk";
-        rev = finalAttrs.version;
+        rev = linphoneVersion;
         hash = "sha256-lv2phU2qF51OIejzjgaBUo9NIdDv4bbK+bpY37Gnr8U=";
         fetchSubmodules = true;
       };
