@@ -7,6 +7,8 @@
 {
   pname,
   sourceRoot ? pname,
+  extraCmakeFlags ? [ ],
+  extraNativeBuildInputs ? [ ],
   ...
 }@args:
 stdenv.mkDerivation (
@@ -28,13 +30,15 @@ stdenv.mkDerivation (
 
       nativeBuildInputs = [
         cmake
-      ];
+      ]
+      ++ extraNativeBuildInputs;
 
       sourceRoot = "${finalAttrs.src.name}/${sourceRoot}";
 
       cmakeFlags = [
         "-DBUILD_SHARED_LIBS=ON"
-      ];
+      ]
+      ++ extraCmakeFlags;
 
       meta = {
         homepage = "https://gitlab.linphone.org/BC/public/linphone-sdk";
@@ -44,8 +48,10 @@ stdenv.mkDerivation (
     }
     (
       builtins.removeAttrs args [
-        "sourceRoot"
+        "extraCmakeFlags"
+        "extraNativeBuildInputs"
         "pname"
+        "sourceRoot"
       ]
     )
   )
