@@ -40,6 +40,7 @@
             bzrtp
             ortp
             mediastreamer2
+            msopenh264
             ;
         }
       );
