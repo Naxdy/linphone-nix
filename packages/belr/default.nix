@@ -6,12 +6,6 @@
 mkLinphonePackage {
   pname = "belr";
 
-  patches = [
-    # since we are building bctoolbox with openssl instead of mbedtls,
-    # we need to find it here
-    ./find-openssl.patch
-  ];
-
   buildInputs = [
     bctoolbox
   ];

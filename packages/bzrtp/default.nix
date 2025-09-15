@@ -7,10 +7,6 @@
 mkLinphonePackage {
   pname = "bzrtp";
 
-  patches = [
-    ./find-openssl.patch
-  ];
-
   buildInputs = [
     bctoolbox
     sqlite

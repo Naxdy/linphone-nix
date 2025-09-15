@@ -7,10 +7,6 @@
 mkLinphonePackage {
   pname = "belcard";
 
-  patches = [
-    ./find-openssl.patch
-  ];
-
   buildInputs = [
     bctoolbox
     belr

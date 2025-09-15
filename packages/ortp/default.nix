@@ -6,10 +6,6 @@
 mkLinphonePackage {
   pname = "ortp";
 
-  patches = [
-    ./find-openssl.patch
-  ];
-
   env.NIX_CFLAGS_COMPILE = "-Wno-error=stringop-truncation";
 
   buildInputs = [ bctoolbox ];

@@ -34,8 +34,6 @@ mkLinphonePackage {
     # plugin directory with desired plugins and wrap executables so that the
     # environment variable points to that directory.
     ./plugins_dir.patch
-
-    ./find-openssl.patch
   ];
 
   extraNativeBuildInputs = [
