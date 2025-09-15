@@ -44,6 +44,7 @@
             belle-sip
             lime
             bc-soci
+            liblinphone
             ;
         }
       );
