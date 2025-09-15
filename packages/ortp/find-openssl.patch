@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2fc8aba9..677dc7e0 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -62,6 +62,7 @@ endif()
+ find_package(Threads)
+ find_library(LIBM NAMES m)
+ 
++find_package(OpenSSL REQUIRED COMPONENTS SSL)
+ find_package(BCToolbox 5.3.0 REQUIRED)
+ #Mandatory to init default compilation flags
+ bc_init_compilation_flags(STRICT_OPTIONS_CPP STRICT_OPTIONS_C STRICT_OPTIONS_CXX ENABLE_STRICT)
