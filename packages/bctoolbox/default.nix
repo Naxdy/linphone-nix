@@ -4,6 +4,8 @@
   mkLinphonePackage,
   openssl,
   lib,
+  testers,
+  bctoolbox,
 }:
 mkLinphonePackage {
   pname = "bctoolbox";
@@ -23,6 +25,15 @@ mkLinphonePackage {
   ];
 
   strictDeps = true;
+
+  passthru.tests = {
+    cmake-config = testers.hasCmakeConfigModules {
+      package = bctoolbox;
+      moduleNames = [
+        "BCToolbox"
+      ];
+    };
+  };
 
   meta = with lib; {
     description = "Utilities library for Linphone";

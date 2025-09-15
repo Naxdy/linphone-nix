@@ -45,6 +45,7 @@
             lime
             bc-soci
             liblinphone
+            linphone-desktop
             ;
         }
       );

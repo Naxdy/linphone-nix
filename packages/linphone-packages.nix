@@ -1,6 +1,4 @@
 {
-  makeScopeWithSplicing',
-  generateSplicesForMkScope,
   libsForQt5,
   lib,
 }:
