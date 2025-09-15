@@ -4,6 +4,8 @@
   mkLinphonePackage,
   openssl,
   lib,
+
+  # tests
   testers,
   bctoolbox,
 }:

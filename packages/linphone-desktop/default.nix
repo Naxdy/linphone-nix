@@ -25,8 +25,8 @@
   jsoncpp,
   doxygen,
   boost,
+  bc-ispell,
 }:
-
 # How to update Linphone? (The Qt desktop app)
 #
 # Belledonne Communications (BC), the company making Linphone, has split the
@@ -59,6 +59,8 @@ stdenv.mkDerivation (finalAttrs: {
   patches = [
     ./require-finding-packages.patch
     ./remove-bc-versions.patch
+    ./do-not-override-install-prefix.patch
+    ./fix-translation-dirs.patch
   ];
 
   # TODO: After linphone-desktop and liblinphone split into separate packages,
@@ -74,8 +76,9 @@ stdenv.mkDerivation (finalAttrs: {
     mediastreamer2
     msopenh264
     lime
-
     bc-soci
+    bc-ispell
+
     xercesc
     minizip-ng
     qtgraphicaleffects

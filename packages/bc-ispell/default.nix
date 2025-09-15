@@ -27,11 +27,6 @@ stdenv.mkDerivation {
     "-DBUILD_SHARED_LIBS=ON"
   ];
 
-  preConfigure = ''
-    substituteInPlace CMakeLists.txt --replace-fail \
-      LibraryDepends Targets
-  '';
-
   nativeBuildInputs = [ cmake ];
 
   meta = with lib; {
