@@ -41,6 +41,7 @@
             ortp
             mediastreamer2
             msopenh264
+            belle-sip
             ;
         }
       );
