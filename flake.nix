@@ -37,6 +37,7 @@
             bctoolbox
             belr
             belcard
+            bzrtp
             ;
         }
       );
