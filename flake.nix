@@ -31,7 +31,12 @@
       packages = forEachSupportedSystem (
         { pkgs, ... }:
         {
-          inherit (pkgs.linphonePackages) bcunit bc-decaf bctoolbox;
+          inherit (pkgs.linphonePackages)
+            bcunit
+            bc-decaf
+            bctoolbox
+            belr
+            ;
         }
       );
 
