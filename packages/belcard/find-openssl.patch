@@ -1,0 +1,12 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4246b82..4a07b4b 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -48,6 +48,7 @@ if(MSVC)
+ endif()
+ 
+ find_package(Belr 5.3.0 REQUIRED)
++find_package(OpenSSL REQUIRED COMPONENTS SSL)
+ find_package(BCToolbox 5.3.0 REQUIRED OPTIONAL_COMPONENTS tester)
+ 
+ if(UNIX AND NOT APPLE)

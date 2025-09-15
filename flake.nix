@@ -36,6 +36,7 @@
             bc-decaf
             bctoolbox
             belr
+            belcard
             ;
         }
       );
