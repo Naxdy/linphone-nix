@@ -11,3 +11,6 @@ Build the application with:
 ```shell
 nix build .#linphone-desktop
 ```
+
+A binary cache exists and is configured in the `flake.nix`, so you may skip building certain libraries by making use of
+it.

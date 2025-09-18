@@ -11,6 +11,15 @@
     };
   };
 
+  nixConfig = {
+    extra-substituters = [
+      "https://naxdy-foss.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "naxdy-foss.cachix.org-1:PHM6OE/js5KW1vfnjCgvkL12+lXhx5Sdzi3FHbf0lyU="
+    ];
+  };
+
   # Flake outputs
   outputs =
     {
