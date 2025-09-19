@@ -18,15 +18,13 @@
 mkLinphoneDerivation {
   pname = "liblinphone";
 
-  postPatch = ''
-    substituteInPlace src/CMakeLists.txt \
-      --replace "jsoncpp_object" "jsoncpp" \
-      --replace "jsoncpp_static" "jsoncpp"
-  '';
-
   extraCmakeFlags = [
     "-DENABLE_UNIT_TESTS=NO" # Do not build test executables
     "-DENABLE_STRICT=NO" # Do not build with -Werror
+
+    # normally set by a cmake module, but
+    # we need to disable it to prevent downstream link errors
+    "-DJsonCPP_TARGET=jsoncpp"
   ];
 
   buildInputs = [
@@ -39,11 +37,14 @@ mkLinphoneDerivation {
     # Vendored by BC
     bc-soci
 
-    jsoncpp
     libxml2
     sqlite
     xercesc
     zxing-cpp
+  ];
+
+  propagatedBuildInputs = [
+    jsoncpp
   ];
 
   nativeBuildInputs = [
@@ -52,7 +53,17 @@ mkLinphoneDerivation {
     (python3.withPackages (ps: [
       ps.pystache
       ps.six
+      ps.pyturbojpeg
     ]))
+  ];
+
+  postPatch = ''
+    substituteInPlace CMakeLists.txt \
+      --replace-fail JsonCPP jsoncpp
+  '';
+
+  removeFindModules = [
+    "JsonCPP"
   ];
 
   strictDeps = true;

@@ -22,10 +22,11 @@
   python3,
   python3Packages,
   zxing-cpp,
-  jsoncpp,
   doxygen,
   boost,
   bc-ispell,
+  qtbase,
+  symlinkJoin,
 }:
 # How to update Linphone? (The Qt desktop app)
 #
@@ -43,6 +44,18 @@
 # the submodule chain and update the corresponding derivations here, in nixpkgs,
 # with the corresponding version number (or commit hash)
 
+let
+  grammarPackages = [
+    belle-sip
+    belcard
+    liblinphone
+  ];
+
+  grammars = symlinkJoin {
+    name = "belr-grammars";
+    paths = map (e: "${e}/share/belr/grammars") grammarPackages;
+  };
+in
 stdenv.mkDerivation (finalAttrs: {
   pname = "linphone-desktop";
   version = "5.3.0";
@@ -61,6 +74,7 @@ stdenv.mkDerivation (finalAttrs: {
     ./remove-bc-versions.patch
     ./do-not-override-install-prefix.patch
     ./fix-translation-dirs.patch
+    ./unset-qml-dir.patch
   ];
 
   # TODO: After linphone-desktop and liblinphone split into separate packages,
@@ -85,7 +99,6 @@ stdenv.mkDerivation (finalAttrs: {
     qtmultimedia
     qtquickcontrols2
     zxing-cpp
-    jsoncpp
     boost
 
     python3Packages.pystache
@@ -116,6 +129,13 @@ stdenv.mkDerivation (finalAttrs: {
     "-DCMAKE_INSTALL_LIBDIR=lib"
     "-DLINPHONEAPP_VERSION=${finalAttrs.version}"
     "-DLINPHONE_QT_ONLY=ON"
+    "-DLINPHONEAPP_INSTALL_PREFIX=${placeholder "out"}"
+    "-DLINPHONE_QML_DIR=${placeholder "out"}/${qtbase.qtQmlPrefix}/ui"
+
+    # normally set by the custom find modules, which we have to disable
+    "-DLibLinphone_TARGET=liblinphone"
+    "-DLinphoneCxx_TARGET=liblinphone++"
+    "-DISpell_SOURCE_DIR=${bc-ispell.src}"
   ];
 
   preConfigure = ''
@@ -127,6 +147,7 @@ stdenv.mkDerivation (finalAttrs: {
   preInstall = ''
     mkdir -p $out/share/linphone
     mkdir -p $out/share/sounds/linphone
+    mkdir -p $out/share/belr
   '';
 
   # In order to find mediastreamer plugins, mediastreamer package was patched to
@@ -146,9 +167,11 @@ stdenv.mkDerivation (finalAttrs: {
     mkdir -p $out/lib/mediastreamer/plugins
     ln -s ${msopenh264}/lib/mediastreamer/plugins/* $out/lib/mediastreamer/plugins/
     ln -s ${mediastreamer2}/lib/mediastreamer/plugins/* $out/lib/mediastreamer/plugins/
+    ln -s ${grammars} $out/share/belr/grammars
 
-    # wrapProgram $out/bin/linphone \
-    #   --set MEDIASTREAMER_PLUGINS_DIR $out/lib/mediastreamer/plugins
+    wrapProgram $out/bin/linphone \
+      --unset QML2_IMPORT_PATH \
+      --set MEDIASTREAMER_PLUGINS_DIR $out/lib/mediastreamer/plugins
   '';
 
   meta = with lib; {
