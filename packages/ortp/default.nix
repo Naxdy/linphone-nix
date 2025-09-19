@@ -1,9 +1,9 @@
 {
   bctoolbox,
   lib,
-  mkLinphonePackage,
+  mkLinphoneDerivation,
 }:
-mkLinphonePackage {
+mkLinphoneDerivation {
   pname = "ortp";
 
   env.NIX_CFLAGS_COMPILE = "-Wno-error=stringop-truncation";

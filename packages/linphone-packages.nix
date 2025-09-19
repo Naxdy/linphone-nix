@@ -9,7 +9,7 @@ let
       packages = lib.filterAttrs (name: value: value == "directory") (builtins.readDir ./.);
     in
     {
-      mkLinphonePackage = self.callPackage ./mk-linphone-package { };
+      mkLinphoneDerivation = self.callPackage ./mk-linphone-derivation { };
 
       linphoneVersion = "5.4.43";
     }

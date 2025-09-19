@@ -13,9 +13,9 @@
   sqlite,
   xercesc,
   zxing-cpp,
-  mkLinphonePackage,
+  mkLinphoneDerivation,
 }:
-mkLinphonePackage {
+mkLinphoneDerivation {
   pname = "liblinphone";
 
   postPatch = ''

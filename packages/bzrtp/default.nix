@@ -2,9 +2,9 @@
   bctoolbox,
   sqlite,
   lib,
-  mkLinphonePackage,
+  mkLinphoneDerivation,
 }:
-mkLinphonePackage {
+mkLinphoneDerivation {
   pname = "bzrtp";
 
   buildInputs = [

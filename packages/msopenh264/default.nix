@@ -2,9 +2,9 @@
   mediastreamer2,
   openh264,
   lib,
-  mkLinphonePackage,
+  mkLinphoneDerivation,
 }:
-mkLinphonePackage {
+mkLinphoneDerivation {
   pname = "msopenh264";
 
   buildInputs = [

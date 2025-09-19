@@ -1,9 +1,9 @@
 {
   bctoolbox,
   lib,
-  mkLinphonePackage,
+  mkLinphoneDerivation,
 }:
-mkLinphonePackage {
+mkLinphoneDerivation {
   pname = "belr";
 
   buildInputs = [

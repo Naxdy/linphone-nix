@@ -1,7 +1,7 @@
 {
   bcunit,
   bc-decaf,
-  mkLinphonePackage,
+  mkLinphoneDerivation,
   openssl,
   lib,
 
@@ -9,7 +9,7 @@
   testers,
   bctoolbox,
 }:
-mkLinphonePackage {
+mkLinphoneDerivation {
   pname = "bctoolbox";
 
   propagatedBuildInputs = [

@@ -1,6 +1,6 @@
 {
-  mkLinphonePackage,
+  mkLinphoneDerivation,
 }:
-mkLinphonePackage {
+mkLinphoneDerivation {
   pname = "bcunit";
 }

@@ -2,13 +2,13 @@
   bctoolbox,
   belr,
   lib,
-  mkLinphonePackage,
+  mkLinphoneDerivation,
 
   # tests
   belcard,
   testers,
 }:
-mkLinphonePackage {
+mkLinphoneDerivation {
   pname = "belcard";
 
   buildInputs = [

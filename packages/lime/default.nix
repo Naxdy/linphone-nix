@@ -4,9 +4,9 @@
   lib,
   bc-soci,
   sqlite,
-  mkLinphonePackage,
+  mkLinphoneDerivation,
 }:
-mkLinphonePackage {
+mkLinphoneDerivation {
   pname = "lime";
 
   buildInputs = [

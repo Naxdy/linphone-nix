@@ -6,9 +6,9 @@
   stdenv,
   zlib,
   python3,
-  mkLinphonePackage,
+  mkLinphoneDerivation,
 }:
-mkLinphonePackage {
+mkLinphoneDerivation {
   pname = "belle-sip";
 
   extraNativeBuildInputs = [

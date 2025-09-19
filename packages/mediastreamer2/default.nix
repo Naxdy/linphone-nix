@@ -19,10 +19,10 @@
   speex,
   srtp,
   sqlite,
-  mkLinphonePackage,
+  mkLinphoneDerivation,
   linphoneVersion,
 }:
-mkLinphonePackage {
+mkLinphoneDerivation {
   pname = "mediastreamer2";
 
   dontWrapQtApps = true;
