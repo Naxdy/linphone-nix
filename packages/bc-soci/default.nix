@@ -49,6 +49,6 @@ stdenv.mkDerivation {
     homepage = "https://gitlab.linphone.org/BC/public/external/soci";
     license = licenses.boost;
     platforms = platforms.all;
-    maintainers = with maintainers; [ thibaultlemaire ];
+    maintainers = with maintainers; [ naxdy ];
   };
 }
